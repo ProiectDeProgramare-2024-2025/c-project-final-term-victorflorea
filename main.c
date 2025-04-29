@@ -205,14 +205,14 @@ void adaugaMasa(){
     mese[nr_mese].id=id;
     mese[nr_mese].capacitate=capacitate;
     mese[nr_mese].rezervata=0;
-    mese[nr_mese].data[0]='0';
-    mese[nr_mese].interval_orar[0]='0';
+    strcpy(mese[nr_mese].data, "00-00-0000");
+    strcpy(mese[nr_mese].interval_orar, "00:00-00:00");
     nr_mese++;
+    salveazaMese();
     green();
     printf("\nMasa a fost adaugata!\n");
     reset();
     continuare();
-    salveazaMese();
     system("cls");
 }
 void stergeMasa(){
@@ -240,6 +240,7 @@ void stergeMasa(){
             return;
         }
     }
+    salveazaMese();
     red();
     printf("\nMasa nu a fost gasita!\n");
     reset();
@@ -282,13 +283,13 @@ void rezervaMasa(){
                 scanf("%19s", mese[i].interval_orar);
                 if(esteIntervalValid(mese[i].interval_orar)){
                     mese[i].rezervata=1;
+                    salveazaMese();
                     break;
                 }
                     red();
                     printf("Va rog sa introduceti un interval orar valid (precum: 12:00-14:00)\n");
                     reset();
             }
-            salveazaMese();
             green();
             printf("\nMasa a fost rezervata!\n");
             reset();
@@ -297,6 +298,7 @@ void rezervaMasa(){
             return;
         }
     }
+    salveazaMese();
     red();
     printf("\nMasa nu a fost gasita!\n");
     reset();
@@ -323,6 +325,7 @@ void anuleazaRezervare(){
             return;
         }
     }
+    salveazaMese();
     red();
     printf("\nRezervarea nu a fost gasita!\n");
     reset();
