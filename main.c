@@ -253,7 +253,7 @@ void rezervaMasa(){
     reset();
     int id;
     lightorange();
-    printf("ID Masa: ");
+    printf("ID Masa(Nr. cuprins intre 1 si 20): ");
     reset();
     scanf("%d",&id);
     for(int i=0;i<nr_mese;i++){
